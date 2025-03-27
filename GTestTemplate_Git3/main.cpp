@@ -22,6 +22,10 @@ TEST_F(SimilarityCheckerFixture, StringNum2)
 	checkString("A", "BB", 0);
 }
 
+TEST_F(SimilarityCheckerFixture, StringNum3)
+{
+	checkString("AAABB", "BAA", 20);
+}
 
 int main() {
 	::testing::InitGoogleMock();
