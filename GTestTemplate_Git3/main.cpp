@@ -6,15 +6,25 @@ using namespace std;
 class SimilarityCheckerFixture : public testing::Test {
 public:
 	SimilarityChecker similarityChecker;
-	string str1;
-	string str2;
+
+	void checkString(string str1, string str2, int expected) {
+		EXPECT_EQ(expected, similarityChecker.lengthCheck(str1, str2));
+	}
 };
 
 TEST_F(SimilarityCheckerFixture, StringNum1)
 {
-	str1 = "ASD";
-	str2 = "DSA";
-	EXPECT_EQ(60, similarityChecker.lengthCheck(str1, str2));
+	checkString("ASD", "DSA", 60);
+}
+
+TEST_F(SimilarityCheckerFixture, StringNum2)
+{
+	checkString("A", "BB", 0);
+}
+
+TEST_F(SimilarityCheckerFixture, StringNum3)
+{
+	checkString("AAABB", "BAA", 20);
 }
 
 int main() {
